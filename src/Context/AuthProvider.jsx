@@ -73,7 +73,7 @@ const AuthProvider = ({ children }) => {
         .finally(() => setLoading(false));
     };
     fatchData();
-  }, [Data]);
+  }, []);
 
   const authInfo = {
     Data,

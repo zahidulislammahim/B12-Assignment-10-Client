@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { FaDollarSign } from "react-icons/fa";
+import { toast } from "react-toastify";
+import Loader from "../../Components/Loader";
 const AddIssues = () => {
-  const { user } = useContext(AuthContext);
+  const { user} = useContext(AuthContext);
   const today = new Date().toISOString().split("T")[0];
   const categories = [
     "Garbage Management",
@@ -10,6 +12,7 @@ const AddIssues = () => {
     "Water & Drainage",
     "Electricity",
     "Environment",
+    "Traffic & Signals",
     "Public Safety",
     "Education & Health",
     "Business & Commerce",
@@ -19,17 +22,30 @@ const AddIssues = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const handelAddIssues = (e) =>{
-    e.preventDefault();
-    const title = e.target.title.value;
-    const category = e.target.category.value;
-    const location = e.target.location.value;
-    const description = e.target.description.value;
-    const image = e.target.image.value;
-    const amount = e.target.amount.value;
-    const email = e.target.email.value;
-    const status = e.target.status.value; 
-    const date = e.target.date.value;
-    console.log(title, category, location, description, image, amount, email, status, date);
+    const addIssuesData = {
+      title:  e.target.title.value,
+      category: e.target.category.value,
+      location: e.target.location.value,
+      description: e.target.description.value,
+      image: e.target.image.value,
+      amount: e.target.amount.value,
+      email: e.target.email.value,
+      status: e.target.status.value, 
+      date: e.target.date.value,
+    }
+    fetch("http://localhost:3000/issues",{
+      method:"POST",
+      headers:{
+        "content-type":"application/json"
+    },
+      body:JSON.stringify(addIssuesData)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data);
+      toast.success("Issues Added Successfully")
+      e.target.reset();
+    }).catch(err=>console.log(err));
     
   }
   return (

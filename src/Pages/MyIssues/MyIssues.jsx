@@ -60,6 +60,9 @@ const MyIssues = () => {
       <h1 className="text-4xl text-center font-bold text-green-500 pb-6">
         My Submitted Issues
       </h1>
+      <p className="text-sm text-gray-500 text-center pb-10">
+          View all the reports you’ve submitted.
+        </p>
 
       <div className="overflow-x-auto rounded-lg shadow-md">
         <table className="w-full min-w-max table-auto text-left border border-gray-200">

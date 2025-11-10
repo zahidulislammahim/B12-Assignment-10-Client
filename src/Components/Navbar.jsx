@@ -21,27 +21,51 @@ const Navbar = () => {
 
   const links = (
     <>
-      <NavLink to="/" className="btn btn-soft btn-success font-bold">
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive
+            ? "  btn btn-success font-bold"
+            : "btn btn-soft btn-success font-bold"
+        }>
         Home
       </NavLink>
-      <NavLink to="/all-issues" className="btn btn-soft btn-success font-bold">
+      <NavLink
+        to="/all-issues"
+        className={({ isActive }) =>
+          isActive
+            ? "  btn btn-success font-bold"
+            : "btn btn-soft btn-success font-bold"
+        }>
         All Issues
       </NavLink>
       {user ? (
         <>
           <NavLink
             to="/add-issues"
-            className="btn btn-soft btn-success font-bold">
+            className={({ isActive }) =>
+              isActive
+                ? "  btn btn-success font-bold"
+                : "btn btn-soft btn-success font-bold"
+            }>
             Add Issues
           </NavLink>
           <NavLink
             to="/my-issues"
-            className="btn btn-soft btn-success font-bold">
+            className={({ isActive }) =>
+              isActive
+                ? "  btn btn-success font-bold"
+                : "btn btn-soft btn-success font-bold"
+            }>
             My Issues
           </NavLink>
           <NavLink
             to="/my-contribution"
-            className="btn btn-soft btn-success font-bold">
+            className={({ isActive }) =>
+              isActive
+                ? "  btn btn-success font-bold"
+                : "btn btn-soft btn-success font-bold"
+            }>
             My Contribution
           </NavLink>
         </>
@@ -52,7 +76,11 @@ const Navbar = () => {
           </NavLink>
           <NavLink
             to="/sign-up"
-            className="btn  btn-outline  btn-success font-bold">
+            className={({ isActive }) =>
+              isActive
+                ? "  btn btn-success font-bold"
+                : "btn btn-soft btn-success font-bold"
+            }>
             Sign Up
           </NavLink>
         </>
