@@ -82,9 +82,9 @@ const MyIssues = () => {
                       <td className={classes}>
                         <span
                           className={`px-3 py-1 text-xs font-medium rounded-full ${
-                            status === "Completed"
+                            status === "Ended"
                               ? "bg-green-100 text-green-700"
-                              : status === "OnGoing"
+                              : status === "Ongoing"
                               ? "bg-yellow-100 text-yellow-700"
                               : "bg-red-100 text-red-700"
                           }`}>
@@ -99,11 +99,13 @@ const MyIssues = () => {
                       </td>
 
                       <td className={classes}>
+                        <Link to={`/edit-issue/${_id}`}>
                         <button
                           className="p-2 rounded-md hover:bg-green-100 text-green-600 transition"
                           title="Edit">
                           <FaEdit />
                         </button>
+                        </Link>
                         <button
                           className="p-2 rounded-md hover:bg-red-100 text-red-600 transition "
                           title="Delete">

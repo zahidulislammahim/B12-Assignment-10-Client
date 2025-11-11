@@ -10,6 +10,7 @@ import MyIssues from "../Pages/MyIssues/MyIssues";
 import PrivateRoute from "./PrivateRoute";
 import Loader from "../Components/Loader";
 import IssueDetails from "../Components/IssueDetails";
+import EditIssuses from "../Components/EditIssuses";
 
 
 export const router = createBrowserRouter([
@@ -38,6 +39,11 @@ export const router = createBrowserRouter([
       {
         path: "/add-issues",
         element: <PrivateRoute><AddIssues></AddIssues></PrivateRoute>,
+      },
+      {
+        path: "/edit-issue/:id",
+        element: <PrivateRoute><EditIssuses></EditIssuses></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:3000/issues/${params.id}`)
       },
       {
         path: "/my-contribution",
