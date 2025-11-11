@@ -10,8 +10,14 @@ const Card = ({ card }) => {
         <img src={card.image} alt={card.title} className="h-80 w-full" />
       </figure>
       <div className="card-body p-4">
-        <h2 className="card-title">
-          {card.title.length > 40
+        <h2 className="card-title md:hidden lg:block block">
+          {/* {card.title} */}
+          {card.title.length > 55
+            ? card.title.slice(0, 55) + "..."
+            : card.title}
+        </h2>
+        <h2 className="card-title hidden md:block lg:hidden">
+          {card.title.length > 45
             ? card.title.slice(0, 40) + "..."
             : card.title}
         </h2>
@@ -28,7 +34,7 @@ const Card = ({ card }) => {
         </div>
         <div className="card-actions  justify-center ">
           <Link
-            to={`/issues-details/${card._id}`}
+            to={`/issues/${card._id}`}
             className="btn bg-green-500 text-white rounded-2xl w-full">
             See Details
           </Link>

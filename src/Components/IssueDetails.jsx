@@ -1,9 +1,15 @@
-import React from "react";
-import { Link } from "react-router";
+import { CalendarDays, ChartColumnStacked, MapPinned } from "lucide-react";
+import React, { useState } from "react";
+import { Link, useLoaderData } from "react-router";
+import Modal from "./Modal";
 
 const IssueDetails = () => {
+  const data = useLoaderData();
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <main className="flex container mx-auto px-4 py-8">
+      <title>{data.title}</title>
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-wrap gap-2 mb-6 text-sm">
           <Link to="/" className="text-green-500 hover:underline">
@@ -18,7 +24,7 @@ const IssueDetails = () => {
           </Link>
           <span className="text-gray-500 dark:text-gray-400">/</span>
           <span className="text-text-light dark:text-text-dark font-medium">
-            Broken Street Light on Main St
+            {data.title}
           </span>
         </div>
 
@@ -26,31 +32,46 @@ const IssueDetails = () => {
           <div className="lg:col-span-2 space-y-6">
             <div>
               <h2 className="text-4xl font-black leading-tight tracking-tight ">
-                Broken Street Light on Main St
+                {data.title}
               </h2>
 
               <div className="flex gap-3 flex-wrap mt-4">
                 <div
-                  className="flex h-8 items-center justify-center gap-x-2 rounded-full bg-green-500/10 px-4 text-green-500"
+                  className="flex h-14 items-center justify-center gap-x-2 rounded bg-green-300/10 px-4 text-green-700 hover:bg-green-100"
                   title="Category">
                   <span className="material-symbols-outlined text-base">
-                    local_police
+                    <ChartColumnStacked />
                   </span>
-                  <p className="text-sm font-medium">Public Safety</p>
+                  <div>
+                    <p className=" font-medium">Category</p>
+                    <p className="text-sm font-medium text-green-500">
+                      {data.category}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="flex h-8 items-center justify-center gap-x-2 rounded-full bg-green-500/10 text-green-500 px-4">
+                <div className="flex h-14 items-center justify-center gap-x-2 rounded bg-green-300/10 text-green-700 px-4 hover:bg-green-100">
                   <span className="material-symbols-outlined text-base">
-                    park
+                    <MapPinned />
                   </span>
-                  <p className="text-sm font-medium">Oak Street Park</p>
+                  <div>
+                    <p className=" font-medium">Locaton</p>
+                    <p className="text-sm font-medium text-green-500">
+                      {data.location}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="flex h-8 items-center justify-center gap-x-2 rounded-full bg-green-500/10 text-green-500 px-4">
+                <div className="flex h-14 items-center justify-center gap-x-2 rounded bg-green-300/10 text-green-700 px-4 hover:bg-green-100">
                   <span className="material-symbols-outlined text-base">
-                    calendar_today
+                    <CalendarDays />
                   </span>
-                  <p className="text-sm font-medium">Reported 3 days ago</p>
+                  <div>
+                    <p className=" font-medium">Date</p>
+                    <p className="text-sm font-medium text-green-500">
+                      {data.date}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -59,19 +80,13 @@ const IssueDetails = () => {
               className="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden rounded-xl min-h-100"
               alt="Image of a broken street light at night on a quiet street"
               style={{
-                backgroundImage:
-                  'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAeyqq1w90gnbZnzV0lM8E_K_XKw4B7yunzVP-MuU0KkiPKUIRjLl2SriXYeuInle65AoICwMMcqUCfMufO-plgA9h6kgsxAQrfogXq5oru6uSzY-RDRd_PtNL22L4L-4Mr4IJQQGCg1jwtR87CC-4j1nNHEDnHQhKkrrf-Pnf0LSOwQTQkCFCU4b7yJMV0JlELbpwgvourkS-PG_3G21fDiFgSLp2pSLi0i7aSQ52X0k4MWvYZrR3wh_9GKSq6QTadNX_wcpQbzQLp")',
+                backgroundImage: `url(${data.image})`,
               }}></div>
 
             <div className="bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold mb-2">Description</h3>
               <p className="text-base leading-relaxed text-gray-600 ">
-                The street light at the corner of Main St and 2nd Ave, right
-                next to the entrance of Oak Street Park, has been flickering for
-                a week and is now completely out. This poses a significant
-                safety risk for pedestrians and drivers in the evening. The area
-                is very dark now, making it difficult to see the crosswalk.
-                Requesting an urgent repair.
+                {data.description}
               </p>
             </div>
           </div>
@@ -84,7 +99,7 @@ const IssueDetails = () => {
                 <div className="flex justify-between items-baseline">
                   <span className="text-gray-600 ">Suggested Budget</span>
                   <span className="text-2xl font-bold text-text-light dark:text-text-dark">
-                    $500.00
+                    ${data.amount}
                   </span>
                 </div>
 
@@ -104,9 +119,15 @@ const IssueDetails = () => {
                   70% funded
                 </div>
 
-                <button className="w-full bg-green-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-500/90 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500/50 dark:focus:ring-offset-background-dark">
+                <button
+                  onClick={() => setOpenModal(true)}
+                  className="w-full bg-green-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-500/90 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500/50 dark:focus:ring-offset-background-dark">
                   Pay Clean-Up Contribution
                 </button>
+                <Modal
+                  data={data}
+                  open={openModal}
+                  onClose={() => setOpenModal(false)}></Modal>
               </div>
             </div>
           </div>

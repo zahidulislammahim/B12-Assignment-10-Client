@@ -3,8 +3,10 @@ import { AuthContext } from "../../Context/AuthContext";
 import { FaDollarSign } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Loader from "../../Components/Loader";
+import { useNavigate } from "react-router";
 const AddIssues = () => {
-  const { user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const navegate = useNavigate();
   const today = new Date().toISOString().split("T")[0];
   const categories = [
     "Garbage Management",
@@ -21,36 +23,39 @@ const AddIssues = () => {
   ];
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  const handelAddIssues = (e) =>{
+  const handelAddIssues = (e) => {
+    e.preventDefault();
     const addIssuesData = {
-      title:  e.target.title.value,
+      title: e.target.title.value,
       category: e.target.category.value,
       location: e.target.location.value,
       description: e.target.description.value,
       image: e.target.image.value,
       amount: e.target.amount.value,
       email: e.target.email.value,
-      status: e.target.status.value, 
+      status: e.target.status.value,
       date: e.target.date.value,
-    }
-    fetch("http://localhost:3000/issues",{
-      method:"POST",
-      headers:{
-        "content-type":"application/json"
-    },
-      body:JSON.stringify(addIssuesData)
+    };
+    fetch("http://localhost:3000/issues", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addIssuesData),
     })
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data);
-      toast.success("Issues Added Successfully")
-      e.target.reset();
-    }).catch(err=>console.log(err));
-    
-  }
+      .then((res) => res.json())
+      .then(() => {
+        toast.success("Issues Added Successfully");
+        e.target.reset();
+        navegate("/all-issues");
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div>
-      <form className="flex flex-col items-center text-sm mt-8 mb-8 " onSubmit={handelAddIssues}>
+      <form
+        className="flex flex-col items-center text-sm mt-8 mb-8 "
+        onSubmit={handelAddIssues}>
         <h1 className="text-4xl font-bold text-green-500 pb-4">
           Add New Community Issue
         </h1>

@@ -15,6 +15,7 @@ import axios from "axios";
 
 const AuthProvider = ({ children }) => {
   const [Data, setData] = useState([]);
+  const [contributionData, setContributionData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
@@ -74,9 +75,22 @@ const AuthProvider = ({ children }) => {
     };
     fatchData();
   }, []);
+  useEffect(() => {
+    setLoading(true);
+
+    const fatchData = async () => {
+      await new Promise((res) => setTimeout(res, 2000));
+      axios("http://localhost:3000/contribution")
+        .then((data) => setContributionData(data.data))
+        .catch((error) => setError(error.message))
+        .finally(() => setLoading(false));
+    };
+    fatchData();
+  }, []);
 
   const authInfo = {
     Data,
+    contributionData,
     loading,
     setLoading,
     updateProfileFunc,

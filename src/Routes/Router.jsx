@@ -48,8 +48,9 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><MyIssues></MyIssues></PrivateRoute>,
       },
       {
-        path: "/issues-details/:id",
+        path: "/issues/:id",
         element: <PrivateRoute><IssueDetails></IssueDetails></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:3000/issues/${params.id}`)
       },
      
     ],

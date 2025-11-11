@@ -4,10 +4,10 @@ import { AuthContext } from "../../Context/AuthContext";
 import Card from "../../Components/Card";
 import Loader from "../../Components/Loader";
 
-
 const AllIssues = () => {
-const {Data} = useContext(AuthContext)
- if (!Data || Data.length === 0) {
+  const { Data } = useContext(AuthContext);
+
+  if (!Data || Data.length === 0) {
     return <Loader></Loader>;
   }
   return (
@@ -18,10 +18,13 @@ const {Data} = useContext(AuthContext)
       <p className="text-sm text-gray-500 text-center pb-10">
         Browse and discover all reported cleanliness and community issues.
       </p>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
-        {Data.map((card) => (
+        {
+        Data.map((card) => (
           <Card card={card} key={card._id}></Card>
-        ))}
+        ))
+        }
       </div>
     </div>
   );
