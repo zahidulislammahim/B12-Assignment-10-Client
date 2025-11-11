@@ -11,7 +11,6 @@ const TABLE_HEAD = [
   "Action",
 ];
 
-
 const MyContribution = () => {
   const { contributionData } = useContext(AuthContext);
 
@@ -45,7 +44,7 @@ const MyContribution = () => {
 
             <tbody>
               {contributionData.map(
-                ({ image, title, amount, date, category, issueId}, index) => {
+                ({ image, title, amount, date, category }, index) => {
                   const isLast = index === contributionData.length - 1;
                   const classes = isLast
                     ? "p-4"
@@ -56,9 +55,7 @@ const MyContribution = () => {
                       key={index}
                       className="hover:bg-gray-50 transition items-center bg-green-100/50">
                       <td className={classes}>
-                        <Link
-                          to={`/issues/${issueId}`}
-                          className="flex items-center gap-3">
+                        <div className="flex items-center gap-3">
                           <img
                             src={image}
                             alt={title}
@@ -67,7 +64,7 @@ const MyContribution = () => {
                           <span className="font-semibold text-gray-800">
                             {title}
                           </span>
-                        </Link>
+                        </div>
                       </td>
                       <td className={classes}>
                         <div className="flex items-center gap-3">

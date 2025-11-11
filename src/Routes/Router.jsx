@@ -10,7 +10,7 @@ import MyIssues from "../Pages/MyIssues/MyIssues";
 import PrivateRoute from "./PrivateRoute";
 import Loader from "../Components/Loader";
 import IssueDetails from "../Components/IssueDetails";
-import EditIssuses from "../Components/EditIssuses";
+import EditIssuses from "../Components/EditIssues";
 
 
 export const router = createBrowserRouter([

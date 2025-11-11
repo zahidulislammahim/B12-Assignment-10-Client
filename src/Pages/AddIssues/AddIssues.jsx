@@ -45,9 +45,12 @@ const AddIssues = () => {
     })
       .then((res) => res.json())
       .then(() => {
-        toast.success("Issues Added Successfully");
         e.target.reset();
         navegate("/all-issues");
+        // setTimeout(() => {
+        //   window.location.reload();
+        // }, 2000);
+        toast.success("Issues Added Successfully");
       })
       .catch((err) => console.log(err));
   };
