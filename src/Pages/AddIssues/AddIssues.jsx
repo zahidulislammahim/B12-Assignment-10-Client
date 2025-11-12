@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { FaDollarSign } from "react-icons/fa";
-import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 const AddIssues = () => {
   const { user } = useContext(AuthContext);
@@ -58,6 +57,7 @@ const AddIssues = () => {
   };
   return (
     <div>
+      <title>Add Issues</title>
       <form
         className="flex flex-col items-center text-sm mt-8 mb-8 "
         onSubmit={handelAddIssues}>
@@ -91,6 +91,7 @@ const AddIssues = () => {
               <select
                 id="category"
                 name="category"
+                required
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 className="border border-green-500/30 rounded px-3 py-3 text-sm focus:outline-none  focus:border-green-500 ">

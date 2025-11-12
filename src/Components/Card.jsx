@@ -5,9 +5,9 @@ import { Link } from "react-router";
 
 const Card = ({ card }) => {
   return (
-    <div className="card bg-base-100  shadow-sm">
+    <div className="card bg-base-100  shadow-sm issues-card">
       <figure>
-        <img src={card.image} alt={card.title} className="h-80 w-full" />
+        <img src={card.image} alt={card.title} className="h-80 w-full " />
       </figure>
       <div className="card-body p-4">
         <h2 className="card-title md:hidden lg:block block">

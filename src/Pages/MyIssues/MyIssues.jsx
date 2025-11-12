@@ -82,6 +82,7 @@ const MyIssues = () => {
 
   return (
     <div className="mt-8 w-11/12 mx-auto mb-8">
+      <title>My Issues</title>
       <h1 className="text-4xl text-center font-bold text-green-500 pb-6">
         My Submitted Issues{" "}
         <span className="text-lg text-gray-500 text-center pb-10">

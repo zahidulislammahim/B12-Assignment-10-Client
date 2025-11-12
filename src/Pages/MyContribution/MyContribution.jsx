@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { FaFileDownload } from "react-icons/fa";
 import { Link } from "react-router";
 import { AuthContext } from "../../Context/AuthContext";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 
 const TABLE_HEAD = [
   "Issues Title",
@@ -14,8 +16,27 @@ const TABLE_HEAD = [
 const MyContribution = () => {
   const { contributionData } = useContext(AuthContext);
 
+  const exportToPDF = () => {
+    const doc = new jsPDF();
+    doc.text("Thank you for contributing to a cleaner community!", 15, 10);
+
+    const tableColumn = ["ID", "Title", "Category", "Amount", "Date"];
+    const tableRows = contributionData.map((item) => [
+      item._id,
+      item.title,
+      item.category,
+      `$${item.amount}`,
+      item.date,
+    ]);
+
+    autoTable(doc, { head: [tableColumn], body: tableRows });
+
+    doc.save("my_contributions.pdf");
+  };
+
   return (
     <div className="mt-8 w-11/12 mx-auto mb-8">
+      <title>My Contributions</title>
       <h1 className="text-4xl text-center font-bold text-green-500 pb-6">
         My Contributions{" "}
         <span className="text-lg text-gray-500 text-center pb-10">
@@ -84,6 +105,7 @@ const MyContribution = () => {
                       </td>
                       <td className={classes}>
                         <button
+                          onClick={exportToPDF}
                           className="p-2 rounded-md hover:bg-green-100 text-green-600 transition"
                           title="Downlode Receipt">
                           <FaFileDownload />

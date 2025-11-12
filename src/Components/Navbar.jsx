@@ -4,6 +4,7 @@ import logo from "../assets/logo.png";
 import { AuthContext } from "../Context/AuthContext";
 import { toast } from "react-toastify";
 import { useContext } from "react";
+import Switch from "./Switch";
 
 const Navbar = () => {
   const { signOutFunc, setUser, user } = useContext(AuthContext);
@@ -157,7 +158,7 @@ const Navbar = () => {
               <ul
                 tabIndex="-1"
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow ">
-                <div>
+                <div className="items-center flex flex-col">
                   <div className="text-center ">
                     <h3 className="font-bold mb-1 text-sm">
                       {user?.displayName || user?.reloadUserInfo?.displayName}
@@ -165,6 +166,9 @@ const Navbar = () => {
                     <p className="text-gray-400 mb-2">
                       {user?.email || user?.reloadUserInfo?.email}
                     </p>
+                  </div>
+                  <div className="w-full m-2 p-2 flex justify-center bg-blue-100">
+                    <Switch></Switch>
                   </div>
                   <button
                     className="btn btn-soft btn-error font-bold w-full"
