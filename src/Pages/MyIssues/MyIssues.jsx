@@ -46,17 +46,29 @@ const MyIssues = () => {
         })
           .then((res) => res.json())
           .then(() => {
-            window.location.reload();
-          })
-          .catch((err) => console.log(err));
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+              confirmButtonColor: "#22C55E",
+            })
+              .then(() => {
+                window.location.reload();
+              })
+              .catch((err) => console.log(err));
+          });
       }
     });
   };
+
   return (
     <div className="mt-8 w-11/12 mx-auto mb-8">
       <h1 className="text-4xl text-center font-bold text-green-500 pb-6">
         My Submitted Issues
       </h1>
+      <p className="text-sm text-gray-500 text-center pb-10">
+       View and manage all the issues you’ve submitted to the community.
+      </p>
 
       <div className="overflow-x-auto rounded-lg shadow-md">
         {Data.length === 0 ? (

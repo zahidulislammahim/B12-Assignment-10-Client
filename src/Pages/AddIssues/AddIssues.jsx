@@ -2,11 +2,8 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { FaDollarSign } from "react-icons/fa";
 import { toast } from "react-toastify";
-import Loader from "../../Components/Loader";
-import { useNavigate } from "react-router";
 const AddIssues = () => {
   const { user } = useContext(AuthContext);
-  const navegate = useNavigate();
   const today = new Date().toISOString().split("T")[0];
   const categories = [
     "Garbage Management",
@@ -45,12 +42,8 @@ const AddIssues = () => {
     })
       .then((res) => res.json())
       .then(() => {
-        e.target.reset();
-        navegate("/all-issues");
-        // setTimeout(() => {
-        //   window.location.reload();
-        // }, 2000);
         toast.success("Issues Added Successfully");
+        window.location.href = "/all-issues";
       })
       .catch((err) => console.log(err));
   };
