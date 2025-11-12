@@ -67,7 +67,7 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
 
     const fatchData = async () => {
-      await new Promise((res) => setTimeout(res, 2000));
+      await new Promise((res) => setTimeout(res, 1000));
       axios("http://localhost:3000/issues")
         .then((data) => setData(data.data))
         .catch((error) => setError(error.message))
@@ -75,18 +75,28 @@ const AuthProvider = ({ children }) => {
     };
     fatchData();
   }, []);
+
   useEffect(() => {
     setLoading(true);
 
     const fatchData = async () => {
-      await new Promise((res) => setTimeout(res, 2000));
-      axios("http://localhost:3000/contribution")
+      await new Promise((res) => setTimeout(res, 1000));
+      axios(
+        `http://localhost:3000/contribution?email=${
+          user?.email || user?.reloadUserInfo?.email
+        }`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
         .then((data) => setContributionData(data.data))
         .catch((error) => setError(error.message))
         .finally(() => setLoading(false));
     };
     fatchData();
-  }, []);
+  }, [user]);
 
   const authInfo = {
     Data,
@@ -108,4 +118,3 @@ const AuthProvider = ({ children }) => {
 };
 
 export default AuthProvider;
-

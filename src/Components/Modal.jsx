@@ -3,23 +3,25 @@ import { AuthContext } from "../Context/AuthContext";
 import { useContext } from "react";
 import { toast } from "react-toastify";
 
-const Modal = ({ open, onClose, data }) => {
+const Modal = ({ open, onClose, data, SetContributors }) => {
   const { user } = useContext(AuthContext);
   if (!open) return null;
   const today = new Date().toISOString().split("T")[0];
+
   const handelAddContribution = (e) => {
     e.preventDefault();
     const addContributionData = {
       title: e.target.title.value,
       image: data.image,
       category: data.category,
-      amount: e.target.amount.value,
+      amount: Number(e.target.amount.value),
       name: e.target.name.value,
       email: e.target.email.value,
       number: e.target.number.value,
       address: e.target.address.value,
       date: e.target.date.value,
       issueId: data._id,
+      contributorImg: user?.photoURL || user?.reloadUserInfo?.photoUrl,
     };
 
     fetch("http://localhost:3000/contribution", {
@@ -30,9 +32,18 @@ const Modal = ({ open, onClose, data }) => {
       body: JSON.stringify(addContributionData),
     })
       .then((res) => res.json())
-      .then(() => {
+      .then((savedData) => {
+        console.log("Saved contribution:", savedData);
+        toast.success("Thanks for your contribution");
+        if (savedData.insertedId) {
+          SetContributors((prev) => [
+            ...prev,
+            { ...addContributionData, _id: savedData.insertedId },
+          ]);
+        }
+
         onClose();
-        toast.success("Thank you for your contribution");
+        // window.location.reload();
       })
       .catch((err) => console.log(err));
   };
@@ -65,12 +76,12 @@ const Modal = ({ open, onClose, data }) => {
         </div>
         <div className="mb-3">
           <label className="block text-gray-700 text-sm mb-1">Amount</label>
-          <div className="w-full border border-green-300 rounded-md px-3 py-2 flex items-center gap-1 focus:ring-2 focus:ring-green-500 outline-none">
+          <div className="w-full border border-green-300 rounded-md px-3  flex items-center gap-1 focus:ring-2 focus:ring-green-500 outline-none">
             <FaDollarSign color="gray" />
             <input
               type="number"
               name="amount"
-              className="  outline-none w-full"
+              className="  outline-none w-full py-2"
               placeholder="Enter your Contribution Amount"
               required
             />

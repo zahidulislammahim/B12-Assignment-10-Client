@@ -2,9 +2,11 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { FaDollarSign } from "react-icons/fa";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 const AddIssues = () => {
   const { user } = useContext(AuthContext);
   const today = new Date().toISOString().split("T")[0];
+
   const categories = [
     "Garbage Management",
     "Roads & Transport",
@@ -32,6 +34,7 @@ const AddIssues = () => {
       email: e.target.email.value,
       status: e.target.status.value,
       date: e.target.date.value,
+      createdTime: new Date(),
     };
     fetch("http://localhost:3000/issues", {
       method: "POST",
@@ -42,8 +45,14 @@ const AddIssues = () => {
     })
       .then((res) => res.json())
       .then(() => {
-        toast.success("Issues Added Successfully");
-        window.location.href = "/all-issues";
+        Swal.fire({
+          title: "Added Successfully!",
+          text: "Your issues has been Added.",
+          icon: "success",
+          confirmButtonColor: "#22C55E",
+        }).then(() => {
+          window.location.href = "/all-issues";
+        });
       })
       .catch((err) => console.log(err));
   };
@@ -132,11 +141,11 @@ const AddIssues = () => {
             <label className="text-black/70 font-semibold">
               Suggested Fix Budget
             </label>
-            <div className="h-12 p-2 mt-2 w-full border border-green-500/30 rounded flex items-center focus:border-green-500 gap-1">
+            <div className=" px-2 mt-2 w-full border border-green-500/30 rounded flex items-center focus:border-green-500 gap-1">
               <FaDollarSign color="gray" />
               <input
                 placeholder="00000"
-                className="outline-none w-full "
+                className="outline-none w-full h-11"
                 type="number"
                 name="amount"
                 required

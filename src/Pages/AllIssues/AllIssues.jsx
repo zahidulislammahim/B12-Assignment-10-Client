@@ -13,7 +13,7 @@ const AllIssues = () => {
   return (
     <div className="w-11/12 mx-auto mt-8 mb-15">
       <h1 className="text-4xl font-bold text-green-500 pb-4 text-center">
-        All Reported Issues
+        All Reported Issues <span className="text-lg text-gray-500 text-center pb-10">({Data.length})</span>
       </h1>
       <p className="text-sm text-gray-500 text-center pb-10">
         Browse and discover all reported cleanliness and community issues.

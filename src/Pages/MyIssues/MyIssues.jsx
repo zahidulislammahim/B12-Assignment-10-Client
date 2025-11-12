@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { Link } from "react-router";
 import { AuthContext } from "../../Context/AuthContext";
 import EditIssues from "../../Components/EditIssues";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const TABLE_HEAD = [
   "Issues Title",
@@ -16,10 +17,28 @@ const TABLE_HEAD = [
 ];
 
 const MyIssues = () => {
-  const { Data } = useContext(AuthContext);
+  const { user, setLoading } = useContext(AuthContext);
   const [openModal, setOpenModal] = useState(false);
   const [selectedIssue, setSelectedIssue] = useState(null);
+  const [myIssues, SetMyIssues] = useState([]);
 
+  useEffect(() => {
+    setLoading(true);
+
+    const fatchData = async () => {
+      axios(`http://localhost:3000/my-issues?email=${user.email}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((data) => SetMyIssues(data.data))
+        .catch((error) => console.log(error.message))
+        .finally(() => setLoading(false));
+    }
+    fatchData();
+    setLoading(false)
+  }, [user, setLoading]);
+  
   const handleEdit = (issue) => {
     setSelectedIssue(issue);
     setOpenModal(true);
@@ -64,14 +83,17 @@ const MyIssues = () => {
   return (
     <div className="mt-8 w-11/12 mx-auto mb-8">
       <h1 className="text-4xl text-center font-bold text-green-500 pb-6">
-        My Submitted Issues
+        My Submitted Issues{" "}
+        <span className="text-lg text-gray-500 text-center pb-10">
+          ({myIssues.length})
+        </span>
       </h1>
       <p className="text-sm text-gray-500 text-center pb-10">
-       View and manage all the issues you’ve submitted to the community.
+        View and manage all the issues you’ve submitted to the community.
       </p>
 
       <div className="overflow-x-auto rounded-lg shadow-md">
-        {Data.length === 0 ? (
+        {myIssues.length === 0 ? (
           <h1 className="text-center text-gray-500 py-20 font-bold text-2xl">
             No Submitted Issue Found
           </h1>
@@ -90,10 +112,10 @@ const MyIssues = () => {
             </thead>
 
             <tbody>
-              {Data.map((issue, index) => {
+              {myIssues.map((issue, index) => {
                 const { image, title, amount, date, status, category, _id } =
                   issue;
-                const isLast = index === Data.length - 1;
+                const isLast = index === myIssues.length - 1;
                 const classes = isLast ? "p-4" : "p-4 border-b border-gray-200";
 
                 return (

@@ -17,7 +17,10 @@ const MyContribution = () => {
   return (
     <div className="mt-8 w-11/12 mx-auto mb-8">
       <h1 className="text-4xl text-center font-bold text-green-500 pb-6">
-        My Contributions
+        My Contributions{" "}
+        <span className="text-lg text-gray-500 text-center pb-10">
+          ({contributionData.length})
+        </span>
       </h1>
       <p className="text-sm text-gray-500 text-center pb-10">
         A record of all your payments towards community cleanups.

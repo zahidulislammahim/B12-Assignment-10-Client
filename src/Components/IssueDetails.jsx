@@ -1,11 +1,20 @@
 import { CalendarDays, ChartColumnStacked, MapPinned } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router";
 import Modal from "./Modal";
 
 const IssueDetails = () => {
   const data = useLoaderData();
   const [openModal, setOpenModal] = useState(false);
+  const [contributors, SetContributors] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/contribution/${data._id}`)
+      .then((res) => res.json())
+      .then((Data) => {
+        SetContributors(Data);
+      });
+  }, [data]);
 
   return (
     <main className="flex container mx-auto px-4 py-8">
@@ -127,6 +136,7 @@ const IssueDetails = () => {
                 <Modal
                   data={data}
                   open={openModal}
+                  SetContributors={SetContributors}
                   onClose={() => setOpenModal(false)}></Modal>
               </div>
             </div>
@@ -149,77 +159,25 @@ const IssueDetails = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-green-500">
-                    <th
-                      className="px-6 py-4 font-medium whitespace-nowrap"
-                      scope="row">
-                      <div className="flex items-center gap-3">
-                        <img
-                          className="w-10 h-10 rounded-full"
-                          alt="Avatar of Jane Doe"
-                          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCinus9gOY_960gvsqYONMzs0PcW-7S-NNGLNt2XVm8E23xZR_miPzOvHd4cWDPqjxvpcU3dTnFJSH8yfD0KwgrmjQZeVx1ed0yB3Jj68o6CawtIJIfJSkzZwK3uGLQH5Y_2WxwmlVfnYWyRlaXWcm6NhM5g2ftNJdF-UfI5lHFoyEExD4rQYyXIct1p7tUa3DRseugtqzj_LCH8EPRZli1_0GP_FO4hwJs6_vy52PHx9X1jMMHCHx_Rqj-DoM6eSgubdZDoeayt72X"
-                        />
-                        <span>Jane Doe</span>
-                      </div>
-                    </th>
-                    <td className="px-6 py-4 text-right font-semibold">
-                      $50.00
-                    </td>
-                  </tr>
-
-                  <tr className="border-b border-green-500">
-                    <th
-                      className="px-6 py-4 font-medium whitespace-nowrap"
-                      scope="row">
-                      <div className="flex items-center gap-3">
-                        <img
-                          className="w-10 h-10 rounded-full"
-                          alt="Avatar of John Smith"
-                          src="https://lh3.googleusercontent.com/aida-public/AB6AXuALbg6E8rrpyL6QaFzToKSTq3QNUzl1j-HkKf9SFR8_-_7axXvaunBKD5jANDo4y8ygcQP-Lm4jPCIPh_05qJMQIRaIWOGzTsV-Ylp5qNXSYzmi3dwNOw-GJB3OUGX2UNyyQHELPAe24CoM5cESxT5VJjeAs3q_UjrqObyrQ9iZU2GIkmMZVsDpMX8ZSaGJPSkbeuSe0tLxXmVoEBcwu-ErTUx4GoEoYFmVaK7JqbrXILgVah3d14KiSjSAgW3QDE3f7bCe47IfSRWV"
-                        />
-                        <span>John Smith</span>
-                      </div>
-                    </th>
-                    <td className="px-6 py-4 text-right font-semibold">
-                      $100.00
-                    </td>
-                  </tr>
-
-                  <tr className="border-b border-green-500">
-                    <th
-                      className="px-6 py-4 font-medium whitespace-nowrap"
-                      scope="row">
-                      <div className="flex items-center gap-3">
-                        <img
-                          className="w-10 h-10 rounded-full"
-                          alt="Avatar of Samantha Lee"
-                          src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9LL884qj0IOS_XC94-IrOiL1iE89bDsGb_W1EvPIJySEjBrjuNR6r7d2_Puh2YrLdyqAJ8_eIIODsAlpstDAIjONWp9s0dl_dvZi3KHc20MmdEprm5DxQ4E-EWJmEQvalJ5OuGkJXeTNSqJIju85_-c9Q5ZzM5Fu-oBVMqZmwSJuNz0B7FJNaLzFCOvFYlDwrPui490cL215HuH6BL5mFS-k9ylwYxUzqV34IW41k1WVk0V_bKm1RDtrcVB5oUbx8jPLTBkaXPbzG"
-                        />
-                        <span>Samantha Lee</span>
-                      </div>
-                    </th>
-                    <td className="px-6 py-4 text-right font-semibold">
-                      $25.00
-                    </td>
-                  </tr>
-
-                  <tr className="border-b border-green-500">
-                    <th
-                      className="px-6 py-4 font-medium whitespace-nowrap"
-                      scope="row">
-                      <div className="flex items-center gap-3">
-                        <img
-                          className="w-10 h-10 rounded-full"
-                          alt="Avatar of Michael Chen"
-                          src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0JExp9z1TIilm4XRxIb-dtrUZRhT3a86y4ssQECYzFQpEEGxb0dSbNUGe9FD6QeR1gszBlFIcmJLJNHiqPL3Dbq-v7nXLLWOYjANQmdFofMWuVC3Js5GlUVdGQUS_2TWzzBuxJYMKOvw1G6UYxjE2z2wBbTuke6oQoDL-j5RfO8zZihdYv0dv21T0H2oAh-m76F8P7McFmsk3WVahbT-Xhq_bGIMb3IpeBG3r_SatZS-3H2fxOKz1GJZx0Euo0KheoUUKt8Vu9oGD"
-                        />
-                        <span>Michael Chen</span>
-                      </div>
-                    </th>
-                    <td className="px-6 py-4 text-right font-semibold">
-                      $175.00
-                    </td>
-                  </tr>
+                  {[...contributors].sort((a, b) => b.amount - a.amount).map((Contributor, index) => (
+                    <tr className="border-b border-green-500" key={index}>
+                      <th
+                        className="px-6 py-4 font-medium whitespace-nowrap"
+                        scope="row">
+                        <div className="flex items-center gap-3">
+                          <img
+                            className="w-10 h-10 rounded-full"
+                            alt="Avatar of Jane Doe"
+                            src={Contributor.contributorImg}
+                          />
+                          <span>{Contributor.name}</span>
+                        </div>
+                      </th>
+                      <td className="px-6 py-4 text-right font-semibold">
+                        {Contributor.amount}
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
