@@ -56,10 +56,10 @@ const AddIssues = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <div>
+    <div className="bg-gray-50 dark:bg-gray-800 ">
       <title>Add Issues</title>
       <form
-        className="flex flex-col items-center text-sm mt-8 mb-8 "
+        className="flex flex-col items-center text-sm pt-8 pb-8 "
         onSubmit={handelAddIssues}>
         <h1 className="text-4xl font-bold text-green-500 pb-4">
           Add New Community Issue
@@ -69,11 +69,11 @@ const AddIssues = () => {
           problem.
         </p>
         <div className="mt-6 w-[350px] md:w-[700px] mb-5">
-          <label className="text-black/70 font-semibold">Issues Title</label>
+          <label className="text-black/70 dark:text-gray-200 font-semibold">Issues Title</label>
           <input
             placeholder="Enter Your Issues Title"
             name="title"
-            className="h-12 p-2 mt-2 w-full border border-green-500/30 rounded outline-none focus:border-green-500"
+            className="placeholder-gray-500 dark:text-gray-200  text-gray-700 h-12 p-2 mt-2 w-full border border-green-500/30 rounded outline-none focus:border-green-500"
             type="text"
             required
           />
@@ -84,7 +84,7 @@ const AddIssues = () => {
             <div className="flex flex-col gap-2 w-full">
               <label
                 htmlFor="category"
-                className="text-sm font-medium text-gray-700">
+                className="text-sm font-medium text-gray-700 dark:text-gray-200">
                 Select Category
               </label>
 
@@ -94,10 +94,10 @@ const AddIssues = () => {
                 required
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="border border-green-500/30 rounded px-3 py-3 text-sm focus:outline-none  focus:border-green-500 ">
-                <option value="">-- Choose a category --</option>
+                className="border text-gray-500 border-green-500/30 rounded px-3 py-3 text-sm focus:outline-none dark:text-gray-200  focus:border-green-500 ">
+                <option value="" className="dark:bg-gray-700">-- Choose a category --</option>
                 {categories.map((category, index) => (
-                  <option key={index} value={category}>
+                  <option key={index} value={category} className="bg-white dark:bg-gray-700">
                     {category}
                   </option>
                 ))}
@@ -105,10 +105,10 @@ const AddIssues = () => {
             </div>
           </div>
           <div className="w-full">
-            <label className="text-black/70 font-semibold">Location</label>
+            <label className="text-black/70 font-semibold dark:text-gray-200">Location</label>
             <input
               placeholder="Enter the Location"
-              className="h-12 p-2 mt-2 w-full border border-green-500/30 rounded outline-none focus:border-green-500"
+              className="placeholder-gray-500 dark:text-gray-200  text-gray-700 h-12 p-2 mt-2 w-full border border-green-500/30 rounded outline-none focus:border-green-500"
               type="text"
               name="location"
               required
@@ -117,21 +117,21 @@ const AddIssues = () => {
         </div>
 
         <div className="mt-6 w-[350px] md:w-[700px]">
-          <label className="text-black/70 font-semibold">Description</label>
+          <label className="text-black/70 font-semibold dark:text-gray-200" >Description</label>
           <textarea
             placeholder="Write Your Issues in Details..."
             name="description"
-            className="w-full mt-2 p-2 h-40 border border-green-500/30 rounded resize-none outline-none focus:border-green-500"
+            className="w-full dark:text-gray-200  placeholder-gray-500 text-gray-700 mt-2 p-2 h-40 border border-green-500/30 rounded resize-none outline-none focus:border-green-500"
             required></textarea>
         </div>
         <div className="mt-6 w-[350px] md:w-[700px] mb-5">
-          <label className="text-black/70 font-semibold">
+          <label className="text-black/70 font-semibold dark:text-gray-200">
             Issues Image Link
           </label>
 
           <input
             placeholder="Enter Your Issues Image Link"
-            className="   h-12 p-2 mt-2 border border-green-500/30 rounded outline-none focus:border-green-500 w-full"
+            className=" placeholder-gray-500 dark:text-gray-200   text-gray-700 h-12 p-2 mt-2 border border-green-500/30 rounded outline-none focus:border-green-500 w-full"
             type="text"
             name="image"
             required
@@ -139,14 +139,14 @@ const AddIssues = () => {
         </div>
         <div className="flex flex-col md:flex-row items-center gap-8 w-[350px] md:w-[700px] mb-5">
           <div className="w-full">
-            <label className="text-black/70 font-semibold">
+            <label className="text-black/70 font-semibold dark:text-gray-200">
               Suggested Fix Budget
             </label>
             <div className=" px-2 mt-2 w-full border border-green-500/30 rounded flex items-center focus:border-green-500 gap-1">
               <FaDollarSign color="gray" />
               <input
                 placeholder="00000"
-                className="outline-none w-full h-11"
+                className="outline-none  text-gray-700 dark:text-gray-200 placeholder-gray-500 w-full h-11"
                 type="number"
                 name="amount"
                 required
@@ -154,10 +154,10 @@ const AddIssues = () => {
             </div>
           </div>
           <div className="w-full">
-            <label className="text-black/70 font-semibold">Your Email</label>
+            <label className="text-black/70 font-semibold dark:text-gray-200">Your Email</label>
             <input
               value={user?.email || user?.reloadUserInfo?.email}
-              className="h-12 p-2 mt-2 w-full border border-green-500/30 rounded outline-none focus:border-green-500"
+              className="text-gray-500 h-12 p-2 mt-2 w-full border border-green-500/30 rounded outline-none focus:border-green-500"
               type="email"
               readOnly
               name="email"
@@ -167,23 +167,23 @@ const AddIssues = () => {
         </div>
         <div className="flex flex-col md:flex-row items-center gap-8 w-[350px] md:w-[700px]">
           <div className="w-full">
-            <label className="text-black/70 font-semibold">Status</label>
+            <label className="text-black/70 font-semibold dark:text-gray-200">Status</label>
             <input
               value="Ongoing"
               readOnly
-              className="h-12 p-2 mt-2 w-full border border-green-500/30 rounded outline-none focus:border-green-500"
+              className="text-gray-500 h-12 p-2 mt-2 w-full border border-green-500/30 rounded outline-none focus:border-green-500"
               type="text"
               name="status"
               required
             />
           </div>
           <div className="w-full">
-            <label className="text-black/70 font-semibold">Date</label>
+            <label className="text-black/70 font-semibold dark:text-gray-200">Date</label>
             <input
               value={today}
               readOnly
               name="date"
-              className="h-12 p-2 mt-2 w-full border border-green-500/30 rounded outline-none focus:border-green-500"
+              className="text-gray-500  h-12 p-2 mt-2 w-full border border-green-500/30 rounded outline-none focus:border-green-500"
               type="text"
               required
             />

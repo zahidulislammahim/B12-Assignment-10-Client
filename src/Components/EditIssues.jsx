@@ -1,4 +1,3 @@
-
 import { toast } from "react-toastify";
 import { FaDollarSign } from "react-icons/fa";
 
@@ -48,7 +47,7 @@ const EditIssues = ({ open, onClose, data }) => {
 
   return (
     <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
-      <div className="bg-white rounded-lg shadow-lg p-6 w-[90%] md:w-[600px] relative">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-[90%] md:w-[600px] relative">
         <button
           onClick={onClose}
           className="absolute top-2 right-2 py-2 px-3 rounded-full text-gray-600 hover:text-black hover:bg-gray-200">
@@ -67,24 +66,35 @@ const EditIssues = ({ open, onClose, data }) => {
 
         <form onSubmit={handleUpdate} className="space-y-4 -mt-5">
           <div>
-            <label className="font-medium">Title</label>
+            <label className="font-medium dark:text-gray-200 text-black/70">
+              Title
+            </label>
             <input
               name="title"
               defaultValue={data.title}
               required
-              className="w-full  rounded p-2 mt-1 border border-green-500/30 focus:border-green-500 outline-none"
+              className="w-full text-gray-700 dark:text-gray-200 placeholder-gray-500 rounded p-2 mt-1 border border-green-500/30 focus:border-green-500 outline-none"
             />
           </div>
 
           <div>
-            <label className="font-medium">Category</label>
+            <label className="font-medium dark:text-gray-200 text-black/70 ">
+              Category
+            </label>
             <select
               name="category"
               defaultValue={data.category}
-              className="w-full border border-green-500/30 rounded p-2 mt-1 focus:border-green-500 outline-none">
-              <option value="">Select Category</option>
+              className="w-full border border-green-500/30 text-gray-700 rounded p-2 mt-1 focus:border-green-500 outline-none dark:text-gray-200">
+              <option
+                value=""
+                className="bg-white-200 dark:text-gray-200 dark:bg-gray-700 text-gray-700 ">
+                Select Category
+              </option>
               {categories.map((cat, i) => (
-                <option key={i} value={cat}>
+                <option
+                  key={i}
+                  value={cat}
+                  className="bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200">
                   {cat}
                 </option>
               ))}
@@ -92,7 +102,9 @@ const EditIssues = ({ open, onClose, data }) => {
           </div>
 
           <div>
-            <label className="font-medium">Amount</label>
+            <label className="font-medium dark:text-gray-200 text-black/70">
+              Amount
+            </label>
             <div className="flex items-center border border-green-500/30 rounded p-2 mt-1">
               <FaDollarSign className="text-gray-400" />
               <input
@@ -100,20 +112,24 @@ const EditIssues = ({ open, onClose, data }) => {
                 name="amount"
                 defaultValue={data.amount}
                 required
-                className="ml-2 w-full outline-none "
+                className="text-gray-700 dark:text-gray-200 placeholder-gray-500 ml-2 w-full outline-none "
               />
             </div>
           </div>
 
           <div>
-            <label className="font-medium">Status</label>
+            <label className="font-medium dark:text-gray-200 text-black/70">
+              Status
+            </label>
             <select
               name="status"
               defaultValue={data.status}
-              className="w-full border border-green-500/30 rounded p-2 mt-1 focus:border-green-500 outline-none">
-              <option value="">Select Status</option>
+              className="w-full border text-gray-700 dark:text-gray-200 border-green-500/30 rounded p-2 mt-1 focus:border-green-500 outline-none">
+              <option value="" className="bg-white dark:bg-gray-700">
+                Select Status
+              </option>
               {statusList.map((s, i) => (
-                <option key={i} value={s}>
+                <option key={i} value={s} className="bg-white dark:bg-gray-700">
                   {s}
                 </option>
               ))}
@@ -121,12 +137,14 @@ const EditIssues = ({ open, onClose, data }) => {
           </div>
 
           <div>
-            <label className="font-medium">Description</label>
+            <label className="font-medium dark:text-gray-200 text-black/70">
+              Description
+            </label>
             <textarea
               name="description"
               defaultValue={data.description}
               rows="8"
-              className="w-full  rounded p-2 mt-1 border border-green-500/30 focus:border-green-500 outline-none resize-none"
+              className="w-full text-gray-700 dark:text-gray-200 placeholder-gray-500 rounded p-2 mt-1 border border-green-500/30 focus:border-green-500 outline-none resize-none"
               required></textarea>
           </div>
 

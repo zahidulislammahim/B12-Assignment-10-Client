@@ -20,93 +20,99 @@ const Home = () => {
     <div>
       <title>Community Cleanliness - Home</title>
       <HeroSlider></HeroSlider>
-      <div className="bg-gray-50 w-full">
-        <div className="max-w-6xl mx-auto py-10 px-5 bg-gray-50">
+      <div className="bg-gray-50 dark:bg-gray-800  w-full">
+        <div className="max-w-6xl mx-auto py-10 px-5 bg-gray-50 dark:bg-gray-800">
           <h2 className="text-4xl font-bold text-green-500 pb-4 text-center mb-5">
             Report an Issue
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 *:transition-shadow *:duration-300 *:hover:shadow-lg *:hover:shadow-gray-300">
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 *:transition-shadow *:duration-300 *:hover:shadow-lg *:hover:shadow-gray-300  dark:*:hover:shadow-gray-900">
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+              <div className="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Trash2 />
               </div>
-              <h3 className="text-gray-900 font-semibold mb-2 text-sm">
+              <h3 className="text-gray-900 dark:text-gray-200 font-semibold mb-2 text-sm">
                 Garbage
               </h3>
-              <p className="text-gray-600 text-xs">
+              <p className="text-gray-600 dark:text-gray-400  text-xs">
                 Report unattended waste or illegal dumping.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+              <div className="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Construction />
               </div>
-              <h3 className="text-gray-900 font-semibold mb-2 text-sm">
+              <h3 className="text-gray-900 dark:text-gray-200 font-semibold mb-2 text-sm">
                 Illegal Construction
               </h3>
-              <p className="text-gray-600 text-xs">
+              <p className="text-gray-600 dark:text-gray-400 text-xs">
                 Report unauthorized building activities.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+              <div className="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Pickaxe />
               </div>
-              <h3 className="text-gray-900 font-semibold mb-2 text-sm">
+              <h3 className="text-gray-900 dark:text-gray-200 font-semibold mb-2 text-sm">
                 Broken Public Property
               </h3>
-              <p className="text-gray-600 text-xs">
+              <p className="text-gray-600 dark:text-gray-400 text-xs">
                 Report damaged benches, lights, or signs.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+              <div className="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-4">
                 <SignpostBig />
               </div>
-              <h3 className="text-gray-900 font-semibold mb-2 text-sm">
+              <h3 className="text-gray-900 dark:text-gray-200 font-semibold mb-2 text-sm">
                 Road Damage
               </h3>
-              <p className="text-gray-600 text-xs">
+              <p className="text-gray-600 dark:text-gray-400 text-xs">
                 Report potholes and other road hazards.
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div className="bg-gray-50 py-8 ">
+      <div className="bg-gray-50 dark:bg-gray-800 py-8 ">
         <div className="max-w-5xl mx-auto  justify-around text-center px-4 grid grid-cols-1 md:grid-cols-3 ">
           <div>
             <p className="text-green-600 font-bold text-6xl">12,500+</p>
-            <p className="text-gray-700 text-lg mt-1">Registered Users</p>
+            <p className="text-gray-700 dark:text-gray-300 text-lg mt-1">
+              Registered Users
+            </p>
           </div>
 
           <div>
             <p className="text-green-600 font-bold text-6xl">8,230</p>
-            <p className="text-gray-700 text-lg mt-1">Issues Resolved</p>
+            <p className="text-gray-700 dark:text-gray-300 text-lg mt-1">
+              Issues Resolved
+            </p>
           </div>
 
           <div>
             <p className="text-orange-500 font-bold text-6xl">1,105</p>
-            <p className="text-gray-700 text-lg mt-1">Issues Pending</p>
+            <p className="text-gray-700 dark:text-gray-300 text-lg mt-1">
+              Issues Pending
+            </p>
           </div>
         </div>
       </div>
-      <div className=" py-10 px-5 bg-gray-50">
+      <div className=" py-10 px-5 bg-gray-50 dark:bg-gray-700">
         <h2 className="text-4xl font-bold text-green-500 pb-4 text-center mb-5">
           Recent Complaints
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-11/12 mx-auto">
           {sortedData.map((card, index) => (
             <div
-              className="card bg-base-100 shadow-sm issues-card h-full transition-shadow duration-300 cursor-pointer hover:shadow-lg hover:shadow-gray-300"
+              className="card bg-green-50 dark:bg-gray-800  shadow-sm issues-card h-full transition-shadow duration-300 cursor-pointer hover:shadow-lg hover:shadow-gray-300 dark:hover:shadow-gray-900"
               key={index}>
               <div className="card-body p-4 flex flex-col justify-between h-full">
                 <div>
-                  <p className="text-green-600 bg-green-100 w-fit px-2 py-1 rounded-md text-sm font-semibold">
+                  <p className="text-green-600 bg-green-100 dark:bg-[#202f32] w-fit px-2 py-1 rounded-md text-sm font-semibold">
                     {card.category}
                   </p>
 
-                  <h2 className="card-title mt-2">{card.title}</h2>
+                  <h2 className="card-title mt-2 text-gray-900 dark:text-gray-200">{card.title}</h2>
                   <div className="flex items-center gap-2 text-green-700 mt-2 mb-3">
                     <GrMapLocation />
                     <p>{card.location}</p>
@@ -121,10 +127,10 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="card-actions justify-center mt-auto pt-4">
+                <div className="card-actions justify-center mt-auto pt-4 ">
                   <Link
                     to={`/issues/${card._id}`}
-                    className="btn bg-green-500 text-white rounded-2xl w-full">
+                    className="btn bg-green-500 text-white rounded-2xl w-full border-green-600">
                     See Details
                   </Link>
                 </div>

@@ -10,7 +10,7 @@ const RootLayout = () => {
         <div className='flex flex-col min-h-screen'>
             {/* <Loader> */}
             <Navbar></Navbar>
-            <section className='flex-1'>
+            <section className='flex-1 '>
                 <Outlet></Outlet>
             </section>
             <Footer></Footer>

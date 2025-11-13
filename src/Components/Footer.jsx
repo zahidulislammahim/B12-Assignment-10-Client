@@ -7,7 +7,7 @@ const Footer = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="bg-green-50/50">
+    <div className="bg-green-50 dark:bg-gray-900">
       <footer className="w-11/12 mx-auto px-2  pt-8  text-gray-500 ">
       <div className="flex flex-col md:flex-row justify-between w-full gap-1 border-b border-green-500/30 pb-6">
         <div className="md:max-w-96">
@@ -16,7 +16,7 @@ const Footer = () => {
               to="/"
               className="flex items-center gap-2 text-2xl font-bold ">
               <img src={logo} className="w-10 " />
-              <h1 className="text-black hover:text-green-500">
+              <h1 className="text-black hover:text-green-500  dark:text-white">
                 Community <span className="text-green-500">Cleanliness</span>
               </h1>
             </Link>
@@ -30,7 +30,7 @@ const Footer = () => {
         </div>
         <div className="flex-1 flex items-start md:justify-end gap-20">
           <div>
-            <h2 className="font-semibold mb-5 text-gray-800">Comunity</h2>
+            <h2 className="font-semibold mb-5 ">Comunity</h2>
             <ul className="text-sm space-y-2 w-30">
               <li>
                 <Link to="/" className="hover:text-green-500 hover:underline">
@@ -87,7 +87,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h2 className="font-semibold text-gray-800 mb-5">
+            <h2 className="font-semibold  mb-5">
               Subscribe to our newsletter
             </h2>
             <div className="text-sm space-y-2">

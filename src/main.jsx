@@ -5,12 +5,15 @@ import AuthProvider from "./Context/AuthProvider.jsx";
 import { RouterProvider } from "react-router";
 import { router } from "./Routes/Router.jsx";
 import { ToastContainer } from "react-toastify";
+import { ThemeProvider } from "next-themes";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router}></RouterProvider>
-      <ToastContainer></ToastContainer>
-    </AuthProvider>
+    <ThemeProvider attribute="class" defaultTheme="light">
+      <AuthProvider>
+        <RouterProvider router={router}></RouterProvider>
+        <ToastContainer></ToastContainer>
+      </AuthProvider>
+    </ThemeProvider>
   </StrictMode>
 );

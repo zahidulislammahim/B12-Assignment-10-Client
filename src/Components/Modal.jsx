@@ -52,7 +52,7 @@ const Modal = ({ open, onClose, data, SetContributors }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
       <form
         onSubmit={handelAddContribution}
-        className="bg-white rounded-lg shadow-lg w-full max-w-2xl p-6 relative">
+        className="bg-white dark:bg-gray-800 rounded-lg shadow-lg w-full max-w-2xl p-6 relative">
         <h2 className="text-4xl font-semibold text-green-500 mb-3 text-center">
           Pay Clean-Up Contribution
         </h2>
@@ -62,7 +62,7 @@ const Modal = ({ open, onClose, data, SetContributors }) => {
         </p>
 
         <div className="mb-3">
-          <label className="block text-gray-700 text-sm mb-1">
+          <label className="block text-gray-700 dark:text-gray-200 text-sm mb-1">
             Issues Title
           </label>
           <input
@@ -70,76 +70,76 @@ const Modal = ({ open, onClose, data, SetContributors }) => {
             value={data.title}
             readOnly
             name="title"
-            className="w-full border border-green-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 outline-none"
+            className="placeholder-gray-500 dark:text-gray-200  text-gray-700 w-full border border-green-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 outline-none"
             placeholder=""
           />
         </div>
         <div className="mb-3">
-          <label className="block text-gray-700 text-sm mb-1">Amount</label>
+          <label className="block text-gray-700 text-sm mb-1 dark:text-gray-200">Amount</label>
           <div className="w-full border border-green-300 rounded-md px-3  flex items-center gap-1 focus:ring-2 focus:ring-green-500 outline-none">
             <FaDollarSign color="gray" />
             <input
               type="number"
               name="amount"
-              className="  outline-none w-full py-2"
+              className="placeholder-gray-500 dark:text-gray-200  text-gray-700  outline-none w-full py-2"
               placeholder="Enter your Contribution Amount"
               required
             />
           </div>
         </div>
         <div className="mb-3">
-          <label className="block text-gray-700 text-sm mb-1">Name</label>
+          <label className="block text-gray-700 text-sm mb-1 dark:text-gray-200">Name</label>
           <input
             type="text"
             name="name"
             readOnly
             value={user?.displayName || user?.reloadUserInfo?.displayName}
-            className="w-full border border-green-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 outline-none"
+            className="placeholder-gray-500 dark:text-gray-200  text-gray-700 w-full border border-green-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 outline-none"
             placeholder=""
           />
         </div>
         <div className="mb-3">
-          <label className="block text-gray-700 text-sm mb-1">Email</label>
+          <label className="block text-gray-700 text-sm mb-1 dark:text-gray-200">Email</label>
           <input
             type="email"
             name="email"
             readOnly
             value={user?.email || user?.reloadUserInfo?.email}
-            className="w-full border border-green-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 outline-none"
+            className="placeholder-gray-500 dark:text-gray-200  text-gray-700 w-full border border-green-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 outline-none"
             placeholder="exampal@gmail.com"
             required
           />
         </div>
         <div className="mb-3">
-          <label className="block text-gray-700 text-sm mb-1">
+          <label className="block text-gray-700 text-sm mb-1 dark:text-gray-200">
             Phone Number
           </label>
           <input
             type="number"
             name="number"
-            className="w-full border border-green-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 outline-none"
+            className=" placeholder-gray-500 dark:text-gray-200  text-gray-700 w-full border border-green-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 outline-none"
             placeholder="Enter your Phone Number"
             required
           />
         </div>
         <div className="mb-3">
-          <label className="block text-gray-700 text-sm mb-1">Address</label>
+          <label className="  dark:text-gray-200  text-gray-700 block  text-sm mb-1 ">Address</label>
           <input
             type="text"
             name="address"
-            className="w-full border border-green-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 outline-none"
+            className="placeholder-gray-500 dark:text-gray-200  text-gray-700 w-full border border-green-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 outline-none"
             placeholder="Enter your Address"
             required
           />
         </div>
         <div className="mb-3">
-          <label className="block text-gray-700 text-sm mb-1">Date</label>
+          <label className="block text-gray-700 text-sm mb-1 dark:text-gray-200">Date</label>
           <input
             type="text"
             name="date"
             readOnly
             value={today}
-            className="w-full border border-green-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 outline-none"
+            className="placeholder-gray-500 dark:text-gray-200  text-gray-700 w-full border border-green-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 outline-none"
             placeholder="Enter your email"
           />
         </div>

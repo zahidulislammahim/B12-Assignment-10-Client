@@ -34,11 +34,11 @@ const MyIssues = () => {
         .then((data) => SetMyIssues(data.data))
         .catch((error) => console.log(error.message))
         .finally(() => setLoading(false));
-    }
+    };
     fatchData();
-    setLoading(false)
+    setLoading(false);
   }, [user, setLoading]);
-  
+
   const handleEdit = (issue) => {
     setSelectedIssue(issue);
     setOpenModal(true);
@@ -81,102 +81,110 @@ const MyIssues = () => {
   };
 
   return (
-    <div className="mt-8 w-11/12 mx-auto mb-8">
-      <title>My Issues</title>
-      <h1 className="text-4xl text-center font-bold text-green-500 pb-6">
-        My Submitted Issues{" "}
-        <span className="text-lg text-gray-500 text-center pb-10">
-          ({myIssues.length})
-        </span>
-      </h1>
-      <p className="text-sm text-gray-500 text-center pb-10">
-        View and manage all the issues you’ve submitted to the community.
-      </p>
+    <div className="">
+      <div className="pt-8 w-11/12 mx-auto pb-8">
+        <title>My Issues</title>
+        <h1 className="text-4xl text-center font-bold text-green-500 pb-6">
+          My Submitted Issues{" "}
+          <span className="text-lg text-gray-500 text-center pb-10">
+            ({myIssues.length})
+          </span>
+        </h1>
+        <p className="text-sm text-gray-500 text-center pb-10">
+          View and manage all the issues you’ve submitted to the community.
+        </p>
 
-      <div className="overflow-x-auto rounded-lg shadow-md">
-        {myIssues.length === 0 ? (
-          <h1 className="text-center text-gray-500 py-20 font-bold text-2xl">
-            No Submitted Issue Found
-          </h1>
-        ) : (
-          <table className="w-full min-w-max table-auto text-left border border-gray-200">
-            <thead className="bg-gray-100">
-              <tr>
-                {TABLE_HEAD.map((head) => (
-                  <th
-                    key={head}
-                    className="px-4 py-3 text-sm font-semibold text-gray-600 border-b border-gray-200">
-                    {head}
-                  </th>
-                ))}
-              </tr>
-            </thead>
+        <div className="overflow-x-auto rounded-lg shadow-md">
+          {myIssues.length === 0 ? (
+            <h1 className="text-center text-gray-500 py-20 font-bold text-2xl">
+              No Submitted Issue Found
+            </h1>
+          ) : (
+            <table className="w-full min-w-max table-auto text-left border border-gray-200 dark:border-gray-900">
+              <thead className="bg-gray-100 dark:bg-gray-900 ">
+                <tr>
+                  {TABLE_HEAD.map((head) => (
+                    <th
+                      key={head}
+                      className="px-4 py-3 text-sm font-semibold text-gray-500 border-b border-gray-200 dark:border-gray-900">
+                      {head}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
 
-            <tbody>
-              {myIssues.map((issue, index) => {
-                const { image, title, amount, date, status, category, _id } =
-                  issue;
-                const isLast = index === myIssues.length - 1;
-                const classes = isLast ? "p-4" : "p-4 border-b border-gray-200";
+              <tbody>
+                {myIssues.map((issue, index) => {
+                  const { image, title, amount, date, status, category, _id } =
+                    issue;
+                  const isLast = index === myIssues.length - 1;
+                  const classes = isLast
+                    ? "p-4"
+                    : "p-4 border-b border-gray-200 dark:border-gray-900 ";
 
-                return (
-                  <tr key={issue._id} className="hover:bg-gray-50 transition">
-                    <td className={classes}>
-                      <Link
-                        to={`/issues/${issue._id}`}
-                        className="flex items-center gap-3">
-                        <img
-                          src={image}
-                          alt={title}
-                          className="w-14 h-10 rounded-md object-cover"
-                        />
-                        <span className="font-semibold text-gray-800">
-                          {title}
+                  return (
+                    <tr key={issue._id} className="hover:bg-gray-200/80 dark:hover:bg-gray-900/40 transition">
+                      <td className={classes}>
+                        <Link
+                          to={`/issues/${issue._id}`}
+                          className="flex items-center gap-3">
+                          <img
+                            src={image}
+                            alt={title}
+                            className="w-14 h-10 rounded-md object-cover"
+                          />
+                          <span className="font-semibold text-gray-800 dark:text-gray-200">
+                            {title}
+                          </span>
+                        </Link>
+                      </td>
+
+                      <td className={`${classes} text-gray-700 dark:text-gray-300`} >${amount}</td>
+                      <td className={`${classes} text-gray-700 dark:text-gray-300`}>{date}</td>
+                      <td className={`${classes} text-gray-700 dark:text-gray-300`}>
+                        <span
+                          className={`px-3 py-1 text-xs font-medium rounded-full ${
+                            status === "Ended"
+                              ? "bg-green-100 text-green-700"
+                              : status === "Ongoing"
+                              ? "bg-yellow-100 text-yellow-700"
+                              : "bg-red-100 text-red-700"
+                          }`}>
+                          {status}
                         </span>
-                      </Link>
-                    </td>
+                      </td>
+                      <td className={`${classes} text-gray-700 dark:text-gray-300`}>{category}</td>
 
-                    <td className={classes}>${amount}</td>
-                    <td className={classes}>{date}</td>
-                    <td className={classes}>
-                      <span
-                        className={`px-3 py-1 text-xs font-medium rounded-full ${
-                          status === "Ended"
-                            ? "bg-green-100 text-green-700"
-                            : status === "Ongoing"
-                            ? "bg-yellow-100 text-yellow-700"
-                            : "bg-red-100 text-red-700"
-                        }`}>
-                        {status}
-                      </span>
-                    </td>
-                    <td className={classes}>{category}</td>
+                      <td className={classes}>
+                        <button
+                          onClick={() => handleEdit(issue)}
+                          className="p-2 rounded-md hover:bg-green-100 text-green-600 transition mr-2"
+                          title="Edit">
+                          <FaEdit />
+                        </button>
 
-                    <td className={classes}>
-                      <button
-                        onClick={() => handleEdit(issue)}
-                        className="p-2 rounded-md hover:bg-green-100 text-green-600 transition mr-2"
-                        title="Edit">
-                        <FaEdit />
-                      </button>
+                        <button
+                          onClick={() => handleDelet(_id)}
+                          className="p-2 rounded-md hover:bg-red-100 text-red-600 transition"
+                          title="Delete">
+                          <MdDeleteForever size="18" />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
+        </div>
 
-                      <button
-                        onClick={() => handleDelet(_id)}
-                        className="p-2 rounded-md hover:bg-red-100 text-red-600 transition"
-                        title="Delete">
-                        <MdDeleteForever size="18" />
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        )}
+        {/* Modal */}
+        <EditIssues
+          open={openModal}
+          onClose={handleClose}
+          data={selectedIssue}
+        />
       </div>
-
-      {/* Modal */}
-      <EditIssues open={openModal} onClose={handleClose} data={selectedIssue} />
     </div>
   );
 };

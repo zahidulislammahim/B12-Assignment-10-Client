@@ -5,6 +5,7 @@ import { AuthContext } from "../Context/AuthContext";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import Switch from "./Switch";
+import { LogOut } from "lucide-react";
 
 const Navbar = () => {
   const { signOutFunc, setUser, user } = useContext(AuthContext);
@@ -24,19 +25,23 @@ const Navbar = () => {
     <>
       <NavLink
         to="/"
-        className={({ isActive }) =>
-          isActive
-            ? "  btn btn-success font-bold"
-            : "btn btn-soft btn-success font-bold"
+         className={({ isActive }) =>
+              `btn font-bold transition-all duration-300 border-0 focus:outline-none focus:ring-0 ${
+                isActive
+                  ? "btn btn-success font-bold"
+                  : "bg-[#f1fcf6] text-[#02d391] hover:bg-[#00d390] hover:text-green-900 dark:bg-[#202f32] dark:text-[#00d390] dark:hover:bg-[#00d390] inset-shadow-sm"
+              }`
         }>
         Home
       </NavLink>
       <NavLink
         to="/all-issues"
         className={({ isActive }) =>
-          isActive
-            ? "  btn btn-success font-bold"
-            : "btn btn-soft btn-success font-bold"
+              `btn font-bold transition-all duration-300 border-0 focus:outline-none focus:ring-0 ${
+                isActive
+                  ? "btn btn-success font-bold"
+                  : "bg-[#f1fcf6] text-[#02d391] hover:bg-[#00d390] hover:text-green-900 dark:bg-[#202f32] dark:text-[#00d390] dark:hover:bg-[#00d390] inset-shadow-sm"
+              }`
         }>
         All Issues
       </NavLink>
@@ -44,28 +49,35 @@ const Navbar = () => {
         <>
           <NavLink
             to="/add-issues"
-            className={({ isActive }) =>
-              isActive
-                ? "  btn btn-success font-bold"
-                : "btn btn-soft btn-success font-bold"
+             className={({ isActive }) =>
+              `btn font-bold transition-all duration-300 border-0 focus:outline-none focus:ring-0 ${
+                isActive
+                  ? "btn btn-success font-bold"
+                  : "bg-[#f1fcf6] text-[#02d391] hover:bg-[#00d390] hover:text-green-900 dark:bg-[#202f32] dark:text-[#00d390] dark:hover:bg-[#00d390] inset-shadow-sm"
+              }`
             }>
             Add Issues
           </NavLink>
+         
           <NavLink
             to="/my-issues"
             className={({ isActive }) =>
-              isActive
-                ? "  btn btn-success font-bold"
-                : "btn btn-soft btn-success font-bold"
+              `btn font-bold transition-all duration-300 border-0 focus:outline-none focus:ring-0 ${
+                isActive
+                  ? "btn btn-success font-bold"
+                  : "bg-[#f1fcf6] text-[#02d391] hover:bg-[#00d390] hover:text-green-900 dark:bg-[#202f32] dark:text-[#00d390] dark:hover:bg-[#00d390] inset-shadow-sm"
+              }`
             }>
             My Issues
           </NavLink>
           <NavLink
             to="/my-contribution"
-            className={({ isActive }) =>
-              isActive
-                ? "  btn btn-success font-bold"
-                : "btn btn-soft btn-success font-bold"
+             className={({ isActive }) =>
+              `btn font-bold transition-all duration-300 border-0 focus:outline-none focus:ring-0 ${
+                isActive
+                  ? "btn btn-success font-bold"
+                  : "bg-[#f1fcf6] text-[#02d391] hover:bg-[#00d390] hover:text-green-900 dark:bg-[#202f32] dark:text-[#00d390] dark:hover:bg-[#00d390] inset-shadow-sm"
+              }`
             }>
             My Contribution
           </NavLink>
@@ -77,10 +89,12 @@ const Navbar = () => {
           </NavLink>
           <NavLink
             to="/sign-up"
-            className={({ isActive }) =>
-              isActive
-                ? "  btn btn-success font-bold"
-                : "btn btn-soft btn-success font-bold"
+             className={({ isActive }) =>
+              `btn font-bold transition-all duration-300 border-0 focus:outline-none focus:ring-0 ${
+                isActive
+                  ? "btn btn-success font-bold"
+                  : "bg-[#f1fcf6] text-[#02d391] hover:bg-[#00d390] hover:text-green-900 dark:bg-[#202f32] dark:text-[#00d390] dark:hover:bg-[#00d390] inset-shadow-sm"
+              }`
             }>
             Sign Up
           </NavLink>
@@ -90,14 +104,14 @@ const Navbar = () => {
   );
 
   return (
-    <div className="w-full shadow-sm  sticky top-0 bg-white z-50 ">
+    <div className="w-full shadow-sm  sticky top-0 bg-white dark:bg-gray-900 z-50 ">
       <div className="navbar  w-11/12 mx-auto  ">
         <div className="navbar-start">
           <div className="dropdown">
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost lg:hidden mr-2">
+              className="btn btn-success lg:hidden mr-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -115,7 +129,7 @@ const Navbar = () => {
             </div>
             <div
               tabIndex="-1"
-              className="menu menu-sm gap-2 dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+              className="menu menu-sm gap-2 dropdown-content bg-white dark:bg-gray-900 rounded-box z-1 mt-3 w-52 p-2 shadow ">
               {links}
             </div>
           </div>
@@ -124,7 +138,7 @@ const Navbar = () => {
               to="/"
               className="flex items-center gap-2 text-2xl font-bold ">
               <img src={logo} className="w-10 " />
-              <h1>
+              <h1 className="text-black dark:text-white hover:text-green-500">
                 Community <span className="text-green-500">Cleanliness</span>
               </h1>
             </Link>
@@ -157,22 +171,23 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex="-1"
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow ">
+                className="menu menu-sm dropdown-content  rounded-box z-1 mt-3 w-fit p-2 shadow bg-white dark:bg-gray-900">
                 <div className="items-center flex flex-col">
                   <div className="text-center ">
-                    <h3 className="font-bold mb-1 text-sm">
+                    <h3 className="font-bold mb-1 text-sm text-gray-700 dark:text-gray-100">
                       {user?.displayName || user?.reloadUserInfo?.displayName}
                     </h3>
-                    <p className="text-gray-400 mb-2">
+                    <p className="text-gray-700 dark:text-gray-100 mb-2">
                       {user?.email || user?.reloadUserInfo?.email}
                     </p>
                   </div>
-                  <div className="w-full m-2 p-2 flex justify-center bg-blue-100">
+                  <div className="w-full m-2 p-2 flex justify-center bg-blue-100 rounded dark:bg-gray-600 hover:bg-blue-400">
                     <Switch></Switch>
                   </div>
                   <button
-                    className="btn btn-soft btn-error font-bold w-full"
+                    className="btn btn-soft btn-error font-bold w-full bg-red-100 border-0 hover:bg-red-400"
                     onClick={handelSignOut}>
+                      <LogOut />
                     Logout
                   </button>
                 </div>
