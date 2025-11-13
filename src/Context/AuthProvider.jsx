@@ -68,11 +68,7 @@ const AuthProvider = ({ children }) => {
 
     const fatchData = async () => {
       await new Promise((res) => setTimeout(res, 1000));
-      axios("https://b12-assignment-10-server.vercel.app/issues", {
-        headers: {
-          authorization: `Bearer ${user.accessToken}`,
-        },
-      })
+      axios("https://b12-assignment-10-server.vercel.app/issues")
         .then((data) => setData(data.data))
         .catch((error) => setError(error.message))
         .finally(() => setLoading(false));
