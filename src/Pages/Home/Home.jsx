@@ -3,18 +3,20 @@ import HeroSlider from "./HeroSlider";
 import { Construction, Pickaxe, SignpostBig, Trash2 } from "lucide-react";
 import { AuthContext } from "../../Context/AuthContext";
 import { GrMapLocation } from "react-icons/gr";
-import { FaSackDollar } from "react-icons/fa6";
 import { Link } from "react-router";
 import bgImage from "../../assets/callToAction.jpg";
+import Loader from "../../Components/Loader";
 
 const Home = () => {
-  const { Data } = useContext(AuthContext);
+  const { Data, loading } = useContext(AuthContext);
 
   const sortedData = [...Data]
     .sort((a, b) => new Date(b.createdTime) - new Date(a.createdTime))
     .slice(0, 6);
 
-  console.log(sortedData);
+if(loading){
+  return<Loader></Loader>
+}
 
   return (
     <div>

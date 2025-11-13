@@ -178,7 +178,6 @@ const MyIssues = () => {
           )}
         </div>
 
-        {/* Modal */}
         <EditIssues
           open={openModal}
           onClose={handleClose}

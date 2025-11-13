@@ -2,20 +2,30 @@ import { CalendarDays, ChartColumnStacked, MapPinned } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router";
 import Modal from "./Modal";
+import Loader from "./Loader";
 
 const IssueDetails = () => {
   const data = useLoaderData();
   const [openModal, setOpenModal] = useState(false);
   const [contributors, SetContributors] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://b12-assignment-10-server.vercel.app/contribution/${data._id}`)
+    fetch(
+      `https://b12-assignment-10-server.vercel.app/contribution/${data._id}`
+    )
       .then((res) => res.json())
       .then((Data) => {
         SetContributors(Data);
-      });
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
   }, [data]);
 
+  
+  if (loading) {
+    return <Loader></Loader>;
+  }
   return (
     <div className="bg-gray-50 dark:bg-gray-900/10">
       <main className="flex container mx-auto px-4 py-8 bg-">
@@ -94,7 +104,9 @@ const IssueDetails = () => {
                 }}></div>
 
               <div className="bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-sm dark:shadow-gray-50/40">
-                <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-200">Description</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-200">
+                  Description
+                </h3>
                 <p className="text-base leading-relaxed text-gray-600 dark:text-gray-500">
                   {data.description}
                 </p>
@@ -109,14 +121,18 @@ const IssueDetails = () => {
 
                 <div className="space-y-4">
                   <div className="flex justify-between items-baseline">
-                    <span className="text-gray-600 dark:text-gray-400">Suggested Budget</span>
+                    <span className="text-gray-600 dark:text-gray-400">
+                      Suggested Budget
+                    </span>
                     <span className="text-2xl font-bold text-gray-800 dark:text-gray-200">
                       ${data.amount}
                     </span>
                   </div>
 
                   <div className="flex justify-between items-baseline">
-                    <span className="text-gray-600 dark:text-gray-400">Collected</span>
+                    <span className="text-gray-600 dark:text-gray-400">
+                      Collected
+                    </span>
                     <span className="text-xl font-bold text-green-500">
                       $350.00
                     </span>
@@ -147,7 +163,9 @@ const IssueDetails = () => {
           </div>
 
           <div className="mt-12 mb-5">
-            <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">Community Contributors</h3>
+            <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">
+              Community Contributors
+            </h3>
             <div className="bg-surface-light dark:bg-surface-dark rounded-lg  overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm text-left">
@@ -175,7 +193,9 @@ const IssueDetails = () => {
                                 alt="Avatar of Jane Doe"
                                 src={Contributor.contributorImg}
                               />
-                              <span className="text-gray-800 dark:text-gray-200">{Contributor.name}</span>
+                              <span className="text-gray-800 dark:text-gray-200">
+                                {Contributor.name}
+                              </span>
                             </div>
                           </th>
                           <td className="px-6 py-4 text-right font-semibold text-gray-800 dark:text-gray-200">

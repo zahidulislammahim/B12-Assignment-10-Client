@@ -68,13 +68,17 @@ const AuthProvider = ({ children }) => {
 
     const fatchData = async () => {
       await new Promise((res) => setTimeout(res, 1000));
-      axios("https://b12-assignment-10-server.vercel.app/issues")
+      axios("https://b12-assignment-10-server.vercel.app/issues", {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      })
         .then((data) => setData(data.data))
         .catch((error) => setError(error.message))
         .finally(() => setLoading(false));
     };
     fatchData();
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     setLoading(true);

@@ -1,4 +1,3 @@
-// import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import logo from "../assets/logo.png";
 import { AuthContext } from "../Context/AuthContext";
@@ -25,23 +24,23 @@ const Navbar = () => {
     <>
       <NavLink
         to="/"
-         className={({ isActive }) =>
-              `btn font-bold transition-all duration-300 border-0 focus:outline-none focus:ring-0 ${
-                isActive
-                  ? "btn btn-success font-bold"
-                  : "bg-[#f1fcf6] text-[#02d391] hover:bg-[#00d390] hover:text-green-900 dark:bg-[#202f32] dark:text-[#00d390] dark:hover:bg-[#00d390] inset-shadow-sm"
-              }`
+        className={({ isActive }) =>
+          `btn font-bold transition-all duration-300 border-0 focus:outline-none focus:ring-0 ${
+            isActive
+              ? "btn btn-success font-bold"
+              : "bg-[#f1fcf6] text-[#02d391] hover:bg-[#00d390] hover:text-green-900 dark:bg-[#202f32] dark:text-[#00d390] dark:hover:bg-[#00d390] inset-shadow-sm"
+          }`
         }>
         Home
       </NavLink>
       <NavLink
         to="/all-issues"
         className={({ isActive }) =>
-              `btn font-bold transition-all duration-300 border-0 focus:outline-none focus:ring-0 ${
-                isActive
-                  ? "btn btn-success font-bold"
-                  : "bg-[#f1fcf6] text-[#02d391] hover:bg-[#00d390] hover:text-green-900 dark:bg-[#202f32] dark:text-[#00d390] dark:hover:bg-[#00d390] inset-shadow-sm"
-              }`
+          `btn font-bold transition-all duration-300 border-0 focus:outline-none focus:ring-0 ${
+            isActive
+              ? "btn btn-success font-bold"
+              : "bg-[#f1fcf6] text-[#02d391] hover:bg-[#00d390] hover:text-green-900 dark:bg-[#202f32] dark:text-[#00d390] dark:hover:bg-[#00d390] inset-shadow-sm"
+          }`
         }>
         All Issues
       </NavLink>
@@ -49,7 +48,7 @@ const Navbar = () => {
         <>
           <NavLink
             to="/add-issues"
-             className={({ isActive }) =>
+            className={({ isActive }) =>
               `btn font-bold transition-all duration-300 border-0 focus:outline-none focus:ring-0 ${
                 isActive
                   ? "btn btn-success font-bold"
@@ -58,7 +57,7 @@ const Navbar = () => {
             }>
             Add Issues
           </NavLink>
-         
+
           <NavLink
             to="/my-issues"
             className={({ isActive }) =>
@@ -72,7 +71,7 @@ const Navbar = () => {
           </NavLink>
           <NavLink
             to="/my-contribution"
-             className={({ isActive }) =>
+            className={({ isActive }) =>
               `btn font-bold transition-all duration-300 border-0 focus:outline-none focus:ring-0 ${
                 isActive
                   ? "btn btn-success font-bold"
@@ -89,7 +88,7 @@ const Navbar = () => {
           </NavLink>
           <NavLink
             to="/sign-up"
-             className={({ isActive }) =>
+            className={({ isActive }) =>
               `btn font-bold transition-all duration-300 border-0 focus:outline-none focus:ring-0 ${
                 isActive
                   ? "btn btn-success font-bold"
@@ -187,7 +186,7 @@ const Navbar = () => {
                   <button
                     className="btn btn-soft btn-error font-bold w-full bg-red-100 border-0 hover:bg-red-400"
                     onClick={handelSignOut}>
-                      <LogOut />
+                    <LogOut />
                     Logout
                   </button>
                 </div>

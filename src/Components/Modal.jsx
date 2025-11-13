@@ -43,7 +43,6 @@ const Modal = ({ open, onClose, data, SetContributors }) => {
         }
 
         onClose();
-        // window.location.reload();
       })
       .catch((err) => console.log(err));
   };

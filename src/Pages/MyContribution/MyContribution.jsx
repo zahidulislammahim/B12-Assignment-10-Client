@@ -28,6 +28,7 @@ const MyContribution = () => {
     doc.save("my_contributions.pdf");
   };
 
+
   return (
     <div className="mt-8 w-11/12 mx-auto mb-8">
       <title>My Contributions</title>
