@@ -24,7 +24,7 @@ const Modal = ({ open, onClose, data, SetContributors }) => {
       contributorImg: user?.photoURL || user?.reloadUserInfo?.photoUrl,
     };
 
-    fetch("http://localhost:3000/contribution", {
+    fetch("https://b12-assignment-10-server.vercel.app/contribution", {
       method: "POST",
       headers: {
         "content-type": "application/json",

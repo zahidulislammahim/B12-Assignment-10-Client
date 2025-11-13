@@ -31,7 +31,7 @@ const EditIssues = ({ open, onClose, data }) => {
       status: e.target.status.value,
     };
 
-    fetch(`http://localhost:3000/issues/${data._id}`, {
+    fetch(`https://b12-assignment-10-server.vercel.app/issues/${data._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedIssue),

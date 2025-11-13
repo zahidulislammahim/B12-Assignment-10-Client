@@ -9,7 +9,7 @@ const IssueDetails = () => {
   const [contributors, SetContributors] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/contribution/${data._id}`)
+    fetch(`https://b12-assignment-10-server.vercel.app/contribution/${data._id}`)
       .then((res) => res.json())
       .then((Data) => {
         SetContributors(Data);

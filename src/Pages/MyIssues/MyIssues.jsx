@@ -26,7 +26,7 @@ const MyIssues = () => {
     setLoading(true);
 
     const fatchData = async () => {
-      axios(`http://localhost:3000/my-issues?email=${user.email}`, {
+      axios(`https://b12-assignment-10-server.vercel.app/my-issues?email=${user.email}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -60,7 +60,7 @@ const MyIssues = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/issues/${id}`, {
+        fetch(`https://b12-assignment-10-server.vercel.app/issues/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

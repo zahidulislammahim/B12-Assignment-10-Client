@@ -35,7 +35,7 @@ const AddIssues = () => {
       date: e.target.date.value,
       createdTime: new Date(),
     };
-    fetch("http://localhost:3000/issues", {
+    fetch("https://b12-assignment-10-server.vercel.app/issues", {
       method: "POST",
       headers: {
         "content-type": "application/json",

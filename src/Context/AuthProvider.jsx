@@ -68,7 +68,7 @@ const AuthProvider = ({ children }) => {
 
     const fatchData = async () => {
       await new Promise((res) => setTimeout(res, 1000));
-      axios("http://localhost:3000/issues")
+      axios("https://b12-assignment-10-server.vercel.app/issues")
         .then((data) => setData(data.data))
         .catch((error) => setError(error.message))
         .finally(() => setLoading(false));
@@ -82,7 +82,7 @@ const AuthProvider = ({ children }) => {
     const fatchData = async () => {
       await new Promise((res) => setTimeout(res, 1000));
       axios(
-        `http://localhost:3000/contribution?email=${
+        `https://b12-assignment-10-server.vercel.app/contribution?email=${
           user?.email || user?.reloadUserInfo?.email
         }`,
         {
