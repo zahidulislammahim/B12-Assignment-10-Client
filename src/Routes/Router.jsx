@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import Loader from "../Components/Loader";
 import IssueDetails from "../Components/IssueDetails";
 import EditIssuses from "../Components/EditIssues";
+import PageNotFound from "../Components/PageNotFound";
 
 
 export const router = createBrowserRouter([
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
     path: "/",
     element: <RootLayout></RootLayout>,
     hydrateFallbackElement: <Loader></Loader>,
-    errorElement: <h1>404 not found</h1>,
+    errorElement: <PageNotFound></PageNotFound>,
     children: [
       {
         path: "/",
