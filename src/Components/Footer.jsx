@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   const { user } = useContext(AuthContext);
@@ -28,7 +30,38 @@ const Footer = () => {
             design.
           </p>
         </div>
-        <div className="flex-1 flex items-start md:justify-end gap-20">
+        <div className="flex-1 flex items-start md:justify-end gap-20 flex-col md:flex-row">
+          <div>
+            <h2 className="font-semibold mb-5 ">Social Links</h2>
+            <ul className="text-sm space-y-2 w-30 text-left">
+              <li className="">
+                <Link to="/" className="gap-2 hover:text-green-500 hover:underline flex items-center ">
+                <Facebook />
+                  Facebook
+                </Link>
+              </li>
+              <li className="">
+                <Link to="/" className="gap-2 hover:text-green-500 hover:underline flex items-center ">
+                <Instagram />
+                  Instagram
+                </Link>
+              </li>
+              <li className="">
+                <Link to="/" className="gap-2 hover:text-green-500 hover:underline flex items-center ">
+                <Linkedin />
+                  Linkedin
+                </Link>
+              </li>
+              <li className="">
+                <Link to="/" className="gap-2 hover:text-green-500 hover:underline flex items-center ">
+                <FaXTwitter/>
+                  Twitter
+                </Link>
+              </li>
+              
+             
+            </ul>
+          </div>
           <div>
             <h2 className="font-semibold mb-5 ">Comunity</h2>
             <ul className="text-sm space-y-2 w-30">
@@ -38,7 +71,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="" className="hover:text-green-500 hover:underline">
+                <Link to="/all-issues" className="hover:text-green-500 hover:underline">
                   All Issues
                 </Link>
               </li>
