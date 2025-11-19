@@ -127,6 +127,11 @@ Responsive design for desktop, tablet, and mobile
 Optional dark/light theme toggle
 
 Accessibility-focused components
+# 🖼️ Screenshots
+### 🏠 Homepage
+![Homepage](src/assets/Home.png)
+### 🎮 Game Details
+![Homepage](src/assets/DetailsPage.png)
 
 ## 📧 Contact
 👤 Author: Zahidul Islam Mahim
