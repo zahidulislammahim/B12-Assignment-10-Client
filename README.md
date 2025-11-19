@@ -129,7 +129,7 @@ Optional dark/light theme toggle
 Accessibility-focused components
 # 🖼️ Screenshots
 ### 🏠 Homepage
-![Homepage](src/assets/Home.png)
+![Homepage](src/assets/HomePage.png)
 ### 🎮 Game Details
 ![Homepage](src/assets/DetailsPage.png)
 
