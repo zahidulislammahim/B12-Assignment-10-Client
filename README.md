@@ -131,7 +131,7 @@ Accessibility-focused components
 ## 📧 Contact
 👤 Author: Zahidul Islam Mahim
 
-📍 Location: Noakhali, Bangladesh
+📍 Location: Dhaka, Bangladesh
 
 📩 Email: zahidul.ismail@example.com
 
